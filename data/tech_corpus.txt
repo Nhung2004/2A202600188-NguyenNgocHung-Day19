@@ -1,0 +1,21 @@
+OpenAI được thành lập bởi Sam Altman và Elon Musk vào năm 2015. 
+Trụ sở chính của OpenAI nằm ở San Francisco.
+OpenAI phát triển ChatGPT, một mô hình ngôn ngữ lớn phổ biến.
+Microsoft đã đầu tư hàng tỷ USD vào OpenAI.
+Microsoft được thành lập bởi Bill Gates và Paul Allen.
+Sản phẩm nổi tiếng nhất của Microsoft là hệ điều hành Windows.
+Google là đối thủ cạnh tranh của Microsoft và OpenAI trong lĩnh vực AI.
+Google được sáng lập bởi Larry Page và Sergey Brin.
+Sản phẩm AI nổi bật của Google là Gemini và Bard.
+Apple được thành lập bởi Steve Jobs, Steve Wozniak và Ronald Wayne.
+Apple sản xuất iPhone và MacBook.
+Meta, trước đây là Facebook, được sáng lập bởi Mark Zuckerberg.
+Meta tập trung phát triển AI mã nguồn mở với mô hình Llama.
+Yann LeCun là Giám đốc AI của Meta.
+Amazon được sáng lập bởi Jeff Bezos.
+Amazon Web Services (AWS) là dịch vụ đám mây lớn nhất thế giới, cung cấp nền tảng cho nhiều công ty AI.
+NVIDIA cung cấp phần cứng, đặc biệt là GPU, để huấn luyện các mô hình AI.
+Jensen Huang là CEO của NVIDIA.
+Google mua lại DeepMind vào năm 2014.
+Demis Hassabis là đồng sáng lập và CEO của DeepMind.
+AlphaGo là một sản phẩm nổi tiếng của DeepMind, từng đánh bại nhà vô địch cờ vây thế giới.

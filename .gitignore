@@ -1,0 +1,32 @@
+# Môi trường ảo (Virtual Environments)
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# File cấu hình môi trường chứa khóa bí mật (API Keys)
+.env
+.env.local
+
+# Các file tạm và bộ nhớ đệm của Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Dữ liệu ChromaDB hoặc cơ sở dữ liệu Vector cục bộ
+chroma_db/
+chroma/
+.chroma/
+
+# Kết quả chạy (Tùy chọn: Bỏ comment nếu không muốn push file kết quả lên git)
+# results/
+# results/*.png
+# results/*.html
+# results/*.csv
+
+# Các thư mục cấu hình của IDE
+.vscode/
+.idea/

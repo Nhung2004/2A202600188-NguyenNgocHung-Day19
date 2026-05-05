@@ -1,0 +1,21 @@
+Query,FlatRAG_Answer,FlatRAG_Time,GraphRAG_Answer,GraphRAG_Time
+Ai là người sáng lập OpenAI?,Sam Altman và Elon Musk là những người sáng lập OpenAI.,1.3172,OpenAI được thành lập bởi Sam Altman và Elon Musk.,1.5707
+Mối quan hệ giữa Microsoft và OpenAI là gì?,Mối quan hệ giữa Microsoft và OpenAI là Microsoft đã đầu tư hàng tỷ USD vào OpenAI.,7.3913,Microsoft đã đầu tư vào OpenAI.,1.3151
+Kể tên một số đối thủ cạnh tranh của OpenAI trong lĩnh vực AI.,Một số đối thủ cạnh tranh của OpenAI trong lĩnh vực AI là Google và Microsoft.,2.1042,Tôi không biết.,1.5472
+Sản phẩm nào của Google tương tự như ChatGPT?,Sản phẩm của Google tương tự như ChatGPT là Bard.,6.1023,Sản phẩm của Google tương tự như ChatGPT là Bard.,1.3451
+DeepMind nổi tiếng với sản phẩm nào và CEO của họ là ai?,DeepMind nổi tiếng với sản phẩm AlphaGo và CEO của họ là Demis Hassabis.,0.9345,DeepMind nổi tiếng với sản phẩm AlphaGo và CEO của họ là Demis Hassabis.,2.4592
+Meta trước đây được gọi là gì?,Meta trước đây được gọi là Facebook.,1.1232,Meta trước đây được gọi là Facebook.,1.3113
+Giám đốc AI của Meta là ai?,Giám đốc AI của Meta là Yann LeCun.,0.9353,Tôi không biết.,1.4383
+NVIDIA cung cấp công nghệ gì để huấn luyện mô hình AI?,"NVIDIA cung cấp phần cứng, đặc biệt là GPU, để huấn luyện các mô hình AI.",1.4075,NVIDIA cung cấp GPU để huấn luyện các mô hình AI.,1.355
+Dịch vụ đám mây lớn nhất thế giới là gì và ai sáng lập công ty đó?,Dịch vụ đám mây lớn nhất thế giới là Amazon Web Services (AWS). Tôi không biết ai sáng lập công ty đó.,1.0291,"Dịch vụ đám mây lớn nhất thế giới là Amazon Web Services (AWS), và công ty sáng lập là Amazon, được sáng lập bởi Jeff Bezos.",1.8001
+Apple sản xuất những thiết bị nào?,Apple sản xuất iPhone và MacBook.,1.1198,Apple sản xuất MacBook và iPhone.,1.3874
+Google đã mua lại công ty nào vào năm 2014?,Google đã mua lại DeepMind vào năm 2014.,0.7796,Tôi không biết.,1.4241
+Ai là CEO của NVIDIA?,CEO của NVIDIA là Jensen Huang.,1.1356,CEO của NVIDIA là Jensen Huang.,1.788
+OpenAI được thành lập vào năm nào?,OpenAI được thành lập vào năm 2015.,0.8447,OpenAI được thành lập vào năm 2015.,3.1928
+Trụ sở chính của OpenAI nằm ở đâu?,Trụ sở chính của OpenAI nằm ở San Francisco.,1.1345,Trụ sở chính của OpenAI nằm ở San Francisco.,4.231
+Ai sáng lập Google?,Google được sáng lập bởi Larry Page và Sergey Brin.,1.3081,Google được sáng lập bởi Larry Page và Sergey Brin.,1.8085
+Mark Zuckerberg đã sáng lập công ty nào?,"Mark Zuckerberg đã sáng lập công ty Meta, trước đây là Facebook.",1.1384,Mark Zuckerberg đã sáng lập công ty Facebook.,1.5537
+Mô hình AI mã nguồn mở của Meta có tên là gì?,Mô hình AI mã nguồn mở của Meta có tên là Llama.,0.9739,Tôi không biết.,1.2079
+Bill Gates và Paul Allen sáng lập công ty nào?,Bill Gates và Paul Allen sáng lập công ty Microsoft.,2.0887,Bill Gates và Paul Allen sáng lập Microsoft.,1.322
+Steve Wozniak và Ronald Wayne đồng sáng lập công ty nào?,Steve Wozniak và Ronald Wayne đồng sáng lập công ty Apple.,0.9296,Steve Wozniak và Ronald Wayne đồng sáng lập công ty Apple.,1.3164
+Hệ điều hành nổi tiếng nhất của Microsoft là gì?,Hệ điều hành nổi tiếng nhất của Microsoft là Windows.,1.0041,Hệ điều hành nổi tiếng nhất của Microsoft là Windows.,1.3508

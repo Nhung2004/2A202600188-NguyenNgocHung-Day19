@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #222222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "white"}, "id": "OpenAI", "label": "OpenAI", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Sam Altman", "label": "Sam Altman", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Elon Musk", "label": "Elon Musk", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "2015", "label": "2015", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "San Francisco", "label": "San Francisco", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "ChatGPT", "label": "ChatGPT", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Microsoft", "label": "Microsoft", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Google", "label": "Google", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "m\u00f4 h\u00ecnh ng\u00f4n ng\u1eef l\u1edbn ph\u1ed5 bi\u1ebfn", "label": "m\u00f4 h\u00ecnh ng\u00f4n ng\u1eef l\u1edbn ph\u1ed5 bi\u1ebfn", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Bill Gates", "label": "Bill Gates", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Paul Allen", "label": "Paul Allen", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "h\u1ec7 \u0111i\u1ec1u h\u00e0nh Windows", "label": "h\u1ec7 \u0111i\u1ec1u h\u00e0nh Windows", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Larry Page", "label": "Larry Page", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Sergey Brin", "label": "Sergey Brin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Gemini", "label": "Gemini", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Bard", "label": "Bard", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "DeepMind", "label": "DeepMind", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Apple", "label": "Apple", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Steve Jobs", "label": "Steve Jobs", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Steve Wozniak", "label": "Steve Wozniak", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Ronald Wayne", "label": "Ronald Wayne", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "iPhone", "label": "iPhone", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "MacBook", "label": "MacBook", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Meta", "label": "Meta", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Mark Zuckerberg", "label": "Mark Zuckerberg", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Facebook", "label": "Facebook", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "AI m\u00e3 ngu\u1ed3n m\u1edf", "label": "AI m\u00e3 ngu\u1ed3n m\u1edf", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Llama", "label": "Llama", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Yann LeCun", "label": "Yann LeCun", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Gi\u00e1m \u0111\u1ed1c AI c\u1ee7a Meta", "label": "Gi\u00e1m \u0111\u1ed1c AI c\u1ee7a Meta", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Amazon", "label": "Amazon", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Jeff Bezos", "label": "Jeff Bezos", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Amazon Web Services (AWS)", "label": "Amazon Web Services (AWS)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "d\u1ecbch v\u1ee5 \u0111\u00e1m m\u00e2y l\u1edbn nh\u1ea5t th\u1ebf gi\u1edbi", "label": "d\u1ecbch v\u1ee5 \u0111\u00e1m m\u00e2y l\u1edbn nh\u1ea5t th\u1ebf gi\u1edbi", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "nhi\u1ec1u c\u00f4ng ty AI", "label": "nhi\u1ec1u c\u00f4ng ty AI", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "NVIDIA", "label": "NVIDIA", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "ph\u1ea7n c\u1ee9ng", "label": "ph\u1ea7n c\u1ee9ng", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "GPU", "label": "GPU", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "c\u00e1c m\u00f4 h\u00ecnh AI", "label": "c\u00e1c m\u00f4 h\u00ecnh AI", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Jensen Huang", "label": "Jensen Huang", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "2014", "label": "2014", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Demis Hassabis", "label": "Demis Hassabis", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "AlphaGo", "label": "AlphaGo", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "nh\u00e0 v\u00f4 \u0111\u1ecbch c\u1edd v\u00e2y th\u1ebf gi\u1edbi", "label": "nh\u00e0 v\u00f4 \u0111\u1ecbch c\u1edd v\u00e2y th\u1ebf gi\u1edbi", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "OpenAI", "label": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "to": "Sam Altman", "width": 1}, {"arrows": "to", "from": "OpenAI", "label": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "to": "Elon Musk", "width": 1}, {"arrows": "to", "from": "OpenAI", "label": "th\u00e0nh l\u1eadp n\u0103m", "relation": "th\u00e0nh l\u1eadp n\u0103m", "title": "th\u00e0nh l\u1eadp n\u0103m", "to": "2015", "width": 1}, {"arrows": "to", "from": "OpenAI", "label": "tr\u1ee5 s\u1edf ch\u00ednh \u1edf", "relation": "tr\u1ee5 s\u1edf ch\u00ednh \u1edf", "title": "tr\u1ee5 s\u1edf ch\u00ednh \u1edf", "to": "San Francisco", "width": 1}, {"arrows": "to", "from": "OpenAI", "label": "ph\u00e1t tri\u1ec3n", "relation": "ph\u00e1t tri\u1ec3n", "title": "ph\u00e1t tri\u1ec3n", "to": "ChatGPT", "width": 1}, {"arrows": "to", "from": "OpenAI", "label": "\u0111\u00e3 \u0111\u1ea7u t\u01b0 v\u00e0o", "relation": "\u0111\u00e3 \u0111\u1ea7u t\u01b0 v\u00e0o", "title": "\u0111\u00e3 \u0111\u1ea7u t\u01b0 v\u00e0o", "to": "Microsoft", "width": 1}, {"arrows": "to", "from": "OpenAI", "label": "l\u00e0 \u0111\u1ed1i th\u1ee7 c\u1ea1nh tranh c\u1ee7a", "relation": "l\u00e0 \u0111\u1ed1i th\u1ee7 c\u1ea1nh tranh c\u1ee7a", "title": "l\u00e0 \u0111\u1ed1i th\u1ee7 c\u1ea1nh tranh c\u1ee7a", "to": "Google", "width": 1}, {"arrows": "to", "from": "ChatGPT", "label": "l\u00e0", "relation": "l\u00e0", "title": "l\u00e0", "to": "m\u00f4 h\u00ecnh ng\u00f4n ng\u1eef l\u1edbn ph\u1ed5 bi\u1ebfn", "width": 1}, {"arrows": "to", "from": "Microsoft", "label": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "to": "Bill Gates", "width": 1}, {"arrows": "to", "from": "Microsoft", "label": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "to": "Paul Allen", "width": 1}, {"arrows": "to", "from": "Microsoft", "label": "s\u1ea3n ph\u1ea9m n\u1ed5i ti\u1ebfng nh\u1ea5t l\u00e0", "relation": "s\u1ea3n ph\u1ea9m n\u1ed5i ti\u1ebfng nh\u1ea5t l\u00e0", "title": "s\u1ea3n ph\u1ea9m n\u1ed5i ti\u1ebfng nh\u1ea5t l\u00e0", "to": "h\u1ec7 \u0111i\u1ec1u h\u00e0nh Windows", "width": 1}, {"arrows": "to", "from": "Microsoft", "label": "l\u00e0 \u0111\u1ed1i th\u1ee7 c\u1ea1nh tranh c\u1ee7a", "relation": "l\u00e0 \u0111\u1ed1i th\u1ee7 c\u1ea1nh tranh c\u1ee7a", "title": "l\u00e0 \u0111\u1ed1i th\u1ee7 c\u1ea1nh tranh c\u1ee7a", "to": "Google", "width": 1}, {"arrows": "to", "from": "Google", "label": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "to": "Larry Page", "width": 1}, {"arrows": "to", "from": "Google", "label": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "to": "Sergey Brin", "width": 1}, {"arrows": "to", "from": "Google", "label": "s\u1ea3n ph\u1ea9m", "relation": "s\u1ea3n ph\u1ea9m", "title": "s\u1ea3n ph\u1ea9m", "to": "Gemini", "width": 1}, {"arrows": "to", "from": "Google", "label": "s\u1ea3n ph\u1ea9m", "relation": "s\u1ea3n ph\u1ea9m", "title": "s\u1ea3n ph\u1ea9m", "to": "Bard", "width": 1}, {"arrows": "to", "from": "Google", "label": "mua l\u1ea1i", "relation": "mua l\u1ea1i", "title": "mua l\u1ea1i", "to": "DeepMind", "width": 1}, {"arrows": "to", "from": "Apple", "label": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "to": "Steve Jobs", "width": 1}, {"arrows": "to", "from": "Apple", "label": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "to": "Steve Wozniak", "width": 1}, {"arrows": "to", "from": "Apple", "label": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp b\u1edfi", "to": "Ronald Wayne", "width": 1}, {"arrows": "to", "from": "Apple", "label": "s\u1ea3n xu\u1ea5t", "relation": "s\u1ea3n xu\u1ea5t", "title": "s\u1ea3n xu\u1ea5t", "to": "iPhone", "width": 1}, {"arrows": "to", "from": "Apple", "label": "s\u1ea3n xu\u1ea5t", "relation": "s\u1ea3n xu\u1ea5t", "title": "s\u1ea3n xu\u1ea5t", "to": "MacBook", "width": 1}, {"arrows": "to", "from": "Meta", "label": "s\u00e1ng l\u1eadp b\u1edfi", "relation": "s\u00e1ng l\u1eadp b\u1edfi", "title": "s\u00e1ng l\u1eadp b\u1edfi", "to": "Mark Zuckerberg", "width": 1}, {"arrows": "to", "from": "Meta", "label": "tr\u01b0\u1edbc \u0111\u00e2y l\u00e0", "relation": "tr\u01b0\u1edbc \u0111\u00e2y l\u00e0", "title": "tr\u01b0\u1edbc \u0111\u00e2y l\u00e0", "to": "Facebook", "width": 1}, {"arrows": "to", "from": "Meta", "label": "t\u1eadp trung ph\u00e1t tri\u1ec3n", "relation": "t\u1eadp trung ph\u00e1t tri\u1ec3n", "title": "t\u1eadp trung ph\u00e1t tri\u1ec3n", "to": "AI m\u00e3 ngu\u1ed3n m\u1edf", "width": 1}, {"arrows": "to", "from": "Meta", "label": "c\u00f3 m\u00f4 h\u00ecnh", "relation": "c\u00f3 m\u00f4 h\u00ecnh", "title": "c\u00f3 m\u00f4 h\u00ecnh", "to": "Llama", "width": 1}, {"arrows": "to", "from": "Yann LeCun", "label": "l\u00e0", "relation": "l\u00e0", "title": "l\u00e0", "to": "Gi\u00e1m \u0111\u1ed1c AI c\u1ee7a Meta", "width": 1}, {"arrows": "to", "from": "Amazon", "label": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "relation": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "title": "\u0111\u01b0\u1ee3c s\u00e1ng l\u1eadp b\u1edfi", "to": "Jeff Bezos", "width": 1}, {"arrows": "to", "from": "Amazon Web Services (AWS)", "label": "l\u00e0", "relation": "l\u00e0", "title": "l\u00e0", "to": "d\u1ecbch v\u1ee5 \u0111\u00e1m m\u00e2y l\u1edbn nh\u1ea5t th\u1ebf gi\u1edbi", "width": 1}, {"arrows": "to", "from": "Amazon Web Services (AWS)", "label": "cung c\u1ea5p n\u1ec1n t\u1ea3ng cho", "relation": "cung c\u1ea5p n\u1ec1n t\u1ea3ng cho", "title": "cung c\u1ea5p n\u1ec1n t\u1ea3ng cho", "to": "nhi\u1ec1u c\u00f4ng ty AI", "width": 1}, {"arrows": "to", "from": "NVIDIA", "label": "cung c\u1ea5p", "relation": "cung c\u1ea5p", "title": "cung c\u1ea5p", "to": "ph\u1ea7n c\u1ee9ng", "width": 1}, {"arrows": "to", "from": "NVIDIA", "label": "cung c\u1ea5p", "relation": "cung c\u1ea5p", "title": "cung c\u1ea5p", "to": "GPU", "width": 1}, {"arrows": "to", "from": "NVIDIA", "label": "hu\u1ea5n luy\u1ec7n", "relation": "hu\u1ea5n luy\u1ec7n", "title": "hu\u1ea5n luy\u1ec7n", "to": "c\u00e1c m\u00f4 h\u00ecnh AI", "width": 1}, {"arrows": "to", "from": "NVIDIA", "label": "l\u00e0 CEO c\u1ee7a", "relation": "l\u00e0 CEO c\u1ee7a", "title": "l\u00e0 CEO c\u1ee7a", "to": "Jensen Huang", "width": 1}, {"arrows": "to", "from": "DeepMind", "label": "\u0111\u01b0\u1ee3c mua l\u1ea1i v\u00e0o n\u0103m", "relation": "\u0111\u01b0\u1ee3c mua l\u1ea1i v\u00e0o n\u0103m", "title": "\u0111\u01b0\u1ee3c mua l\u1ea1i v\u00e0o n\u0103m", "to": "2014", "width": 1}, {"arrows": "to", "from": "DeepMind", "label": "l\u00e0 \u0111\u1ed3ng s\u00e1ng l\u1eadp v\u00e0 CEO c\u1ee7a", "relation": "l\u00e0 \u0111\u1ed3ng s\u00e1ng l\u1eadp v\u00e0 CEO c\u1ee7a", "title": "l\u00e0 \u0111\u1ed3ng s\u00e1ng l\u1eadp v\u00e0 CEO c\u1ee7a", "to": "Demis Hassabis", "width": 1}, {"arrows": "to", "from": "DeepMind", "label": "l\u00e0 s\u1ea3n ph\u1ea9m c\u1ee7a", "relation": "l\u00e0 s\u1ea3n ph\u1ea9m c\u1ee7a", "title": "l\u00e0 s\u1ea3n ph\u1ea9m c\u1ee7a", "to": "AlphaGo", "width": 1}, {"arrows": "to", "from": "AlphaGo", "label": "\u0111\u00e1nh b\u1ea1i", "relation": "\u0111\u00e1nh b\u1ea1i", "title": "\u0111\u00e1nh b\u1ea1i", "to": "nh\u00e0 v\u00f4 \u0111\u1ecbch c\u1edd v\u00e2y th\u1ebf gi\u1edbi", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"shape": "dot", "size": 20, "font": {"size": 16}}, "edges": {"color": {"inherit": true}, "smooth": false, "font": {"size": 12, "align": "middle"}}, "physics": {"forceAtlas2Based": {"gravitationalConstant": -50, "centralGravity": 0.01, "springLength": 100, "springConstant": 0.08}, "minVelocity": 0.75, "solver": "forceAtlas2Based"}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
